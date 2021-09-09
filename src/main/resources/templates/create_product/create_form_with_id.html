@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+	  
+<head th:replace="fragments :: html-head(type='none')" />
+
+<body style="background-color:black;">
+	<div th:fragment="content" th:remove="tag">
+		<br/>
+		<form action="#" th:action="@{/save}" th:object="${product}" method="post"
+			class="form" id="form">
+		<div >
+		<table class="table table-primary table-design text-white text-center">
+			<tr>
+				<td><label class="form-label">Product Id:</label></td>
+				<td>
+				<input type="number" th:field="*{id}" class="form-control" required
+				id="newProdId" 
+				style="color:black; font-weight:bold; background-color: #D9D9DB;">
+				</td>
+			</tr>
+			<tr>
+				<td><label class="form-label">Product Name:</label></td>
+				<td><input type="text" th:field="*{name}" class="form-control" required 
+				style="color:black; font-weight:bold; background-color: #D9D9DB;"></td>
+			</tr>
+			<tr>
+				<td><label class="form-label">Brand:</label></td>
+				<td><input type="text" th:field="*{brand}" class="form-control " required 
+				style="color:black; font-weight:bold; background-color: #D9D9DB;"></td>
+			</tr>
+			<tr>
+				<td><label class="form-label">Made in:</label></td>
+				<td><input type="text" th:field="*{madein}" class="form-control" required 
+				style="color:black; font-weight:bold; background-color: #D9D9DB;"></td>
+			</tr>
+			<tr>
+				<td><label class="form-label">Price:</label></td>
+				<td><input type="text" th:field="*{price}" class="form-control" required 
+				style="color:black; font-weight:bold; background-color: #D9D9DB;"></td>
+			</tr>
+			<tr>
+				<td colspan="2"><button class="btn btn-primary" type="submit" style="font-weight:bold;">create</button></td>
+			</tr>
+		</table>
+		</div>
+		</form>
+	</div>
+	
+	<div class="modal" id="myModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="modalTitle">Warning</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					<span id="modalBody">This is content</span>
+				</div>
+				<div class="modal-footer">
+				<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>

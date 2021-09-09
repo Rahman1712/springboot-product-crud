@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+	<head th:replace="fragments :: html-head(type='tag')" />
+	<link rel="stylesheet" th:href="@{/css/newproduct.css}">
+</head>
+
+<body style="background-color: black;">
+ 	<div th:replace="fragments :: html-body">Static Header</div>
+ 	<div class="text-center">
+ 		<h1 class="text_bl">Add new Product</h1>
+ 	</div>
+ 	<div>
+ 		<ul class="nav nav-tabs" id="myTab" role="tablist">
+ 			<li class="nav-item">
+ 			<a class="nav-link active" id="create_form-tab" data-toggle="tab"
+ 			   href="#create_form" role="tab"
+ 			   aria-controls="create_form" aria-selected="false">Create Product</a>
+ 			</li>
+ 			<li>
+ 			<a class="nav-link" id="create_form_with_id-tab" data-toggle="tab"
+ 			   href="#create_form_with_id" role="tab"
+ 			   aria-controls="create_form_with_id" aria-selected="true">Create product using Id</a>
+ 			</li>
+ 		</ul>
+ 		<div class="tab-content" id="myTabContent">
+ 		    <div class="tab-pane fade show active  p-3" id="create_form" 
+ 		    	role="tabpanel" aria-labelledby="create_form-tab">
+ 		    	<div th:replace="create_product/create_form :: content">
+ 		    		create_form
+ 		    	</div>	
+ 		    </div>
+ 		    <div class="tab-pane fade  p-3" id="create_form_with_id" 
+ 		    	role="tabpanel" aria-labelledby="create_form_with_id-tab">
+ 		    	<div th:replace="create_product/create_form_with_id :: content">
+ 		    		create_form_with_id
+ 		    	</div>	
+ 		    </div>
+ 		</div>	
+ 	</div>
+ 
+ 	<div th:replace="fragments :: html-footer"></div>
+	
+<script type="text/javascript">
+	var contextPath = "[[@{/}]]";	
+	var csrfHeader = "[[${_csrf.headerName}]]";
+	var csrfToken = "[[${_csrf.token}]]";
+</script>
+<script th:src="@{/js/newproduct.js}"></script>
+
+</body>
+</html>

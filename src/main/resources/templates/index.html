@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head th:replace="fragments :: html-head(type='none')" />
+
+<body style="background-color: black;">
+	<div class="text-center">
+	    <div th:replace="fragments :: html-body">Static Header</div>
+		
+		
+		<h1 class="text_head">Products Details</h1>
+		<h1 class="h1_p">ar darb</h1>
+		
+	
+	<div class="table_prod_div">
+		<table border="1"  class="table table-dark">
+			<thead class="table-head">
+				<tr>
+					<th>Product Id</th>
+					<th>Product Name</th>
+					<th>Brand</th>
+					<th>Made in</th>
+					<th>Price</th>
+					<th sec:authorize="hasAnyAuthority('ADMIN','EDITOR')">Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="product : ${listProducts}">
+					<td th:text="${product.id}">Product Id</td>
+					<td th:text="${product.name}">Product Name</td>
+					<td th:text="${product.brand}">Brand</td>
+					<td th:text="${product.madein}">Made in</td>
+					<td th:text="${product.price}">Price</td>
+
+					<td sec:authorize="hasAnyAuthority('ADMIN','EDITOR')">
+						<a class="link-detail"  th:href="@{'/view/'+${product.id}}"  title="view details of this product">View</a>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<a th:href="@{'/edit/'+${product.id}}">Edit</a>
+						&nbsp;&nbsp;&nbsp;&nbsp; <a sec:authorize="hasAuthority('ADMIN')"
+						th:href="@{'/delete/'+${product.id}}">Delete</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	</div>
+	<div><br/></div>
+	
+	<div  th:replace="fragments :: html-footer"></div>
+	
+	<div class="modal" id="myModal">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+			
+			</div>
+		</div>
+	</div>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".link-detail").on("click",function(e){
+			e.preventDefault();
+			$("#myModal").modal("show").find(".modal-content").load($(this).attr("href"));
+		});
+	});
+</script>
+</body>
+</html>

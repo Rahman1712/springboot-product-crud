@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+	  
+<head th:replace="fragments :: html-head(type='none')" />
+
+<body style="background-color:black;">
+	<div th:fragment="content" th:remove="tag">
+		<br/>
+		<form action="#" th:action="@{/save}" th:object="${product}" method="post"
+		 >
+		
+		<table class="table table-primary table-design text-white text-center">
+			<tr>
+				<td><label class="form-label">Product Name:</label></td>
+				<td><input type="text" th:field="*{name}" class="form-control" required
+				style="color:black; font-weight:bold; background-color: #D9D9DB;"></td>
+			</tr>
+			<tr>
+				<td><label class="form-label">Brand:</label></td>
+				<td><input type="text" th:field="*{brand}" class="form-control " required 
+				style="color:black; font-weight:bold; background-color: #D9D9DB;"></td>
+			</tr>
+			<tr>
+				<td><label class="form-label">Made in:</label></td>
+				<td><input type="text" th:field="*{madein}" class="form-control" required 
+				style="color:black; font-weight:bold; background-color: #D9D9DB;"></td>
+			</tr>
+			<tr>
+				<td><label class="form-label">Price:</label></td>
+				<td><input type="text" th:field="*{price}" class="form-control" required 
+				style="color:black; font-weight:bold; background-color: #D9D9DB;"></td>
+			</tr>
+			<tr>
+				<td colspan="2"><button class="btn btn-primary" type="submit" style="font-weight:bold;">create</button></td>
+			</tr>
+		</table>
+		
+		</form>
+	</div>
+</body>
+</html>

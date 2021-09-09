@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Login - my company</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style type="text/css">
+.form_design {
+/* 	background: #3A1324; */
+/* 	background: -webkit-radial-gradient(bottom, #3A1324, #110F41); */
+/* 	background: -moz-radial-gradient(bottom, #3A1324, #110F41); */
+/* 	background: radial-gradient(to top, #3A1324, #110F41); */
+	background: #171927;
+	background: -webkit-radial-gradient(bottom, #171927, #121145);
+	background: -moz-radial-gradient(bottom, #171927, #121145);
+	background: radial-gradient(to top, #171927, #121145);
+	margin: 0 auto;
+	max-width: 400px;
+}
+</style>
+</head>
+<body style="background-color: black;">
+
+	<div>
+		<br />
+		<br />
+		<form th:action="@{/login}" method="post" class="form_design">
+			<br />
+			<div class="pl-3 pr-3">
+				<h1 class="text-center text-white pb-2" style="border-radius: 50px;">
+					Login</h1>
+			</div>
+			
+			<div th:if="${param.error}">
+				<p class="text-center text-danger">Invalid username or password</p>
+			</div>
+			<div th:if="${param.logout}">
+				<p class="text-center text-success">You have been logged out.</p>
+			</div>
+			
+			<p class="text-white pl-3 pr-3">
+				&nbsp; &nbsp; Email: 
+				<input type="text" name="email"
+					style="border-radius: 50px;" class="form-control"
+					placeholder="username" />
+			</p>
+			<p class="text-white pl-3 pr-3">
+				&nbsp; &nbsp; Password: 
+				<input type="password" name="password"
+					style="border-radius: 50px;" class="form-control"
+					placeholder="password" />
+			</p>
+			<p class="text-white pl-5 pr-3">
+				<input type="checkbox" name="remember-me" /> Remember me on this computer.
+			</p>
+
+			<p class="text-center">
+				<input type="submit" style="border-radius: 50px;"
+					class="btn btn-primary" value="Log me in" />
+			</p>
+			<br />
+		</form>
+	</div>
+</body>
+</html>
